@@ -2,7 +2,7 @@
 import Layout from "@/layouts/Layout.astro";
 import AboutFace from "@/components/AboutFace.astro";
 import SITE from "@/config";
-import { AVATAR, PERSONAL_SECTIONS } from "@/data/life";
+import { AVATAR, PERSONAL_SECTIONS, PROFILE_LIFE } from "@/data/life";
 import { AVATAR_WORK, PROFILE, PROFESSIONAL_SECTIONS } from "@/data/about";
 import { t, fill } from "@/locales";
 // The ASCII art is a two-way easter egg: a real HTML comment at the top of
@@ -48,7 +48,8 @@ const SWITCH_LABELS = {
       face="personal"
       priority
       avatar={AVATAR}
-      name={SITE.title}
+      name={PROFILE_LIFE.name}
+      headline={PROFILE_LIFE.headline}
       socials={SITE.socials}
       sections={PERSONAL_SECTIONS}
     />

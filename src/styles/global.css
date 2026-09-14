@@ -334,6 +334,7 @@ html.lenis body {
   border-radius: 50%;
   border: 3px solid var(--ts-gray-300);
   margin-inline: auto;
+  object-fit: cover;
 }
 /* Timeline subtitles (issuer, placement, role…) read as captions: Tocas's
    `is-tiny` size, a clear step below the is-medium body. Scoped to the

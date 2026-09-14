@@ -5,13 +5,14 @@
 // (experience/education/project history) reproduces exactly through this
 // one shape:
 //  - experience: has `end`, one or more named duties
-//  - education: has `end`, at most one duty whose `name` carries the
-//    "thesis title" line (empty `text` when there's no description)
+//  - education: has `end`; optional duties for thesis / 畢業專題
+//    (empty `text` when there's no description; `href` on a thesis title)
 //  - project experience: no `end` (bare year), a single nameless duty (its
 //    `name` is "", so the bold line is skipped and only the paragraph shows)
 // Shell, heading, and empty-guard live in Section.astro.
 import type { TimelineEntry } from "@/data/sections";
 import Icon from "@/components/Icon.astro";
+import { isExternal } from "@/utils/url";
 
 interface Props {
   entries: TimelineEntry[];
@@ -38,7 +39,18 @@ const { entries } = Astro.props;
               {e.duties.map((d, i) => (
                 <>
                   {i > 0 && <div class="ts-divider is-section" />}
-                  {d.name && <div class="ts-text is-bold">{d.name}</div>}
+                  {d.name && d.href ? (
+                    <a
+                      class="ts-text is-bold"
+                      href={d.href}
+                      target={isExternal(d.href) ? "_blank" : undefined}
+                      rel={isExternal(d.href) ? "noopener noreferrer" : undefined}
+                    >
+                      {d.name}
+                    </a>
+                  ) : (
+                    d.name && <div class="ts-text is-bold">{d.name}</div>
+                  )}
                   {d.text && <p class="ts-text is-secondary">{d.text}</p>}
                 </>
               ))}

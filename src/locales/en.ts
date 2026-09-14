@@ -10,7 +10,7 @@ const en = {
   "landing.allPosts": "All posts",
   "landing.aboutLabel": "About this site",
   "landing.aboutBlurb":
-    "This is where I keep things. The resume and the works, the everyday posts, the photos along the way, they all live here. To meet the person behind them, flip through the About page.",
+    "Resumes, projects, and posts I have not written yet all live here. To meet the person behind them, flip the About page.",
   "landing.hello": "Find me here",
   // Landing section eyebrows: the big English word above each section's
   // localized descriptor. English in both locales by design (like
@@ -20,7 +20,7 @@ const en = {
   "landing.enGallery": "Gallery",
   "landing.enProjects": "Projects",
   "landing.enHello": "Say hello",
-  "projects.description": "Selected works and side projects",
+  "projects.description": "Course projects and small tools",
   "projects.empty": "Nothing here yet.",
   "layout.backToTop": "Back to top",
   "face.switchTo": "Switch to {name}", // {name} replaced with Work/Life

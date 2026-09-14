@@ -1,13 +1,8 @@
-import type { ImageMetadata } from "astro";
 import type {
   Section,
   TimelineEntry,
   HighlightEntry,
-  CardEntry,
 } from "@/data/sections";
-import coverTide from "../assets/discography/tide.jpg";
-import coverNight from "../assets/discography/night.jpg";
-import coverDawn from "../assets/discography/dawn.jpg";
 
 export type Experience = {
   period: string;
@@ -22,8 +17,14 @@ export type Education = {
   degree: string;
   /** Thesis title, for degrees that have one. */
   thesis?: string;
+  /** Handle or landing page for the thesis. */
+  thesisUrl?: string;
   /** What the thesis did, in a paragraph. */
   description?: string;
+  /** Undergraduate capstone / 畢業專題. */
+  project?: string;
+  /** What the capstone did, in a paragraph. */
+  projectDescription?: string;
 };
 
 /** A dated public achievement: awards, talks, community work. */
@@ -35,156 +36,287 @@ export type Highlight = {
   note?: string;
 };
 
-// Photo: Baruk Granda, https://unsplash.com/photos/OHLRskxOpjI (Unsplash
-// License — free to use, modify, and redistribute; see
-// https://unsplash.com/license). On-stage silhouette, no visible face —
-// the musician identity, so it also fronts blog posts (BlogPost.astro).
 import avatarWork from "../assets/avatar-work.jpg";
 /** Work-face avatar (the Life face keeps data/life.ts's AVATAR). */
 export const AVATAR_WORK = avatarWork;
 
-/** A released work — repurposed from a certification-style card. */
-export type Discography = {
-  name: string;
-  issuer: string;
-  year: string;
-  /** Imported cover art or a full https:// URL; omit for a placeholder. */
-  img?: ImageMetadata | string;
-};
-
-// Dates read `YYYY.MM`, kept short: the timeline renders them in a
-// nowrap column, and a wider one squeezes the entry beside it.
-
 export const PROFILE = {
-  name: "拍岸",
-  headline: "創作歌手・製作人",
+  name: "林駿騰",
+  headline: "社會新鮮人・待業中",
   bio: [
-    "目前隸屬浪聲唱片，身兼創作歌手與製作人，曲風橫跨民謠、電子與爵士，不喜歡被單一標籤定義。",
-    "出道前在各地的展演空間駐唱多年，靠一把吉他跟一本寫滿塗改的歌詞本，慢慢找到屬於自己的聲音。",
+    "我是駿騰，2026 年 6 月自國立高雄科技大學智慧商務系碩士班畢業。做前端，也碰後端和一點資料分析。",
+    "目前待業中。學期間做過車牌辨識、公車站牌分析、租屋網等課程專題。",
   ],
 };
 
-// Placeholder career history — obviously-fake demo content. Replace every
-// value below with your own history; the shapes are what Section.astro
-// expects.
+export const PROJECTS_WORK: Experience[] = [
+  {
+    period: "2025.04 – 2025.08",
+    title: "線上銷售與內容管理平台 · 業界委託",
+    duties: [
+      {
+        name: "付款後開通",
+        text: "學員完成付款後，系統自動開通對應課程的觀看權限。",
+      },
+      {
+        name: "權限",
+        text: "依角色控管後台與內容，避免未授權的人看到課程或管理功能。",
+      },
+      {
+        name: "課程內容",
+        text: "課程可分章節，支援影片、嵌入頁面與長文，方便放教材。",
+      },
+    ],
+  },
+  {
+    period: "2024.07 – 2025.03",
+    title: "POS 管理平台 · 業界委託",
+    duties: [
+      {
+        name: "進銷存",
+        text: "管理商品與供應商，並處理進貨、銷貨單據。",
+      },
+      {
+        name: "櫃台與結帳",
+        text: "監看 POS 機台狀態、設定發票與支付方式，並留下開關帳紀錄。",
+      },
+      {
+        name: "會員與促銷",
+        text: "員工權限、會員分群，以及促銷折扣規則。",
+      },
+    ],
+  },
+  {
+    period: "2023.05 – 2023.12",
+    title: "CodeCourse 程式線上學習平台 · 畢業專題",
+    duties: [
+      {
+        name: "即時評測",
+        text: "學習者在瀏覽器寫程式，系統立刻執行並回傳結果，支援多種語言。",
+      },
+      {
+        name: "學習方式",
+        text: "有學習路徑，題型包含選擇題、克漏字與實際寫程式。",
+      },
+      {
+        name: "教學端",
+        text: "可看作答紀錄，學習者能對照錯誤訊息與教師詳解。",
+      },
+    ],
+  },
+];
+
 export const EXPERIENCE: Experience[] = [
   {
-    period: "2023.06 – 至今",
-    title: "浪聲唱片 · 簽約歌手／製作人",
+    period: "2025.08 – 2026.07",
+    title: "應屆畢業生聯合會 · 會長",
     duties: [
       {
-        name: "《潮汐圖》製作",
-        text: "身兼創作與製作，融合電子節拍與弦樂編制，主打單曲登上多個串流平台週榜前列。",
+        name: "創會",
+        text: "推動校級畢業組織成立，擔任第一屆會長。",
       },
       {
-        name: "「浪跡」巡迴演出",
-        text: "統籌全長 18 場的巡迴演出，並參與燈光與舞台腳本設計。",
+        name: "畢業事務",
+        text: "統籌建工、燕巢兩校區學位服發放與畢業照，服務 47 個班級、972 名應屆畢業生。",
       },
     ],
   },
   {
-    period: "2019.03 – 2023.05",
-    title: "拂曉音樂工作室 · 駐店創作歌手",
+    period: "2024.08 – 2026.07",
+    title: "學生會 · 商業智慧學院學生議員",
     duties: [
       {
-        name: "客座填詞",
-        text: "為工作室旗下新人樂團擔任客座填詞人，累積超過四十首合作作品。",
+        name: "走出校園",
+        text: "與地方民意代表針對創新路交通問題進行現場會勘。",
+      },
+      {
+        name: "選舉改革",
+        text: "推動選舉改革，學生會正副會長由一正四副四校區制改為一正二副不分校區制。",
+      },
+    ],
+  },
+  {
+    period: "2023.08 – 2024.07",
+    title: "學生會 · 行政中心副秘書長",
+    duties: [],
+  },
+  {
+    period: "2023.11 – 2024.04",
+    title: "學生會 · 選舉委員會主任委員",
+    duties: [
+      {
+        name: "選舉改革",
+        text: "推動選舉改革，學生議員由系選舉區制改為院選舉區制，並增設法定當選門檻。",
+      },
+    ],
+  },
+  {
+    period: "2022.08 – 2023.07",
+    title: "學生會 · 行政中心學術組長",
+    duties: [
+      {
+        name: "文書規範",
+        text: "管理內部文書作業規範，並擔任內部課程講師指導，確保運作符合規範。",
+      },
+      {
+        name: "全校制服日",
+        text: "擔任學生會第一屆「全校制服日」總召集人，負責企劃發想、跨校區資源調度與現場管控，與 24 個科系學生會合作，領導 252 人執行團隊，成功吸引全校逾 1500 人參與。",
+      },
+    ],
+  },
+  {
+    period: "2020.09 – 2024.06",
+    title: "國立高雄科技大學 智慧商務系",
+    duties: [
+      {
+        name: "系學會",
+        text: "服務副組長，執行系上活動並統籌系級畢業典禮。",
       },
     ],
   },
 ];
 
-// Newest first, matching the timeline above.
 export const EDUCATION: Education[] = [
   {
-    period: "2015.09 – 2019.06",
-    school: "臨海音樂學苑",
-    degree: "現代音樂創作組",
-    thesis: "畢業製作《潮間帶》",
+    period: "2024.09 – 2026.06",
+    school: "國立高雄科技大學",
+    degree: "智慧商務系碩士",
+    thesis:
+      "基於Transformer編碼器與圖卷積神經網路之繁體中文假新聞檢測：雙字形增強與少樣本閾值校準的跨資料集研究",
     description:
-      "採集海邊城市四季的環境聲音，混音成一張以民謠編曲為底的畢業作品。",
+      "本研究結合 Transformer 編碼器與圖卷積神經網路，做繁體中文假新聞檢測，並用雙字形增強與少樣本閾值校準，在不同資料集上驗證。結論是結合雙字形增強與少樣本閾值校準優於基準表現，但圖卷積神經網路則需視情境使用。",
+  },
+  {
+    period: "2020.09 – 2024.06",
+    school: "國立高雄科技大學",
+    degree: "智慧商務系學士",
+    project: "CodeCourse程式線上學習平台",
+    projectDescription:
+      "線上寫程式並立刻看到執行結果。有學習路徑、選擇題、克漏字，教師端可看作答紀錄。",
+  },
+  {
+    period: "2017.09 – 2020.06",
+    school: "國立員林崇實高工",
+    degree: "資訊科",
   },
 ];
 
-// Placeholder skill tags — swap in your own.
 export const SKILLS: string[] = [
-  "作曲",
-  "填詞",
-  "編曲",
-  "鋼琴",
-  "吉他",
-  "混音",
-  "現場演出",
-  "多語言演唱",
+  "TypeScript",
+  "JavaScript",
+  "React",
+  "Next.js",
+  "Vite",
+  "Tailwind CSS",
+  "shadcn/ui",
+  "React Hook Form",
+  "Zod",
+  "Node.js",
+  "Express",
+  "PayloadCMS",
+  "PostgreSQL",
+  "GraphQL",
+  "REST API",
+  "Git",
+  "ESLint",
+  "Python",
+  "PyTorch",
+  "Pandas",
+  "NumPy",
+  "NLP",
+  "GNN",
 ];
 
-// Career highlights, newest first.
+export const PUBLICATIONS: Highlight[] = [
+  {
+    date: "2026.06",
+    title: "碩士論文",
+    detail:
+      "基於 Transformer 編碼器與圖卷積神經網路之繁體中文假新聞檢測：雙字形增強與少樣本閾值校準的跨資料集研究",
+  },
+  {
+    date: "2026.05",
+    title: "ICIM 2026",
+    detail:
+      "基於官方新聞與群眾查核資料之繁體中文假新聞檢測研究：結合 Transformer 與圖卷積神經網路",
+    note: "林駿騰、廖奕雯、林孝忠、賴谷鑫",
+  },
+  {
+    date: "2025.12",
+    title: "IMP 2025",
+    detail: "結合大型語言模型與圖神經網路混合架構於假新聞偵測之研究",
+    note: "林駿騰、廖奕雯、林孝忠",
+  },
+];
+
 export const HIGHLIGHTS: Highlight[] = [
   {
-    date: "2025.11",
-    title: "金浪獎",
-    detail: "年度最佳跨界創作歌手",
-    note: "以專輯《潮汐圖》入圍三項，抱回一座。",
+    date: "2024",
+    title: "書卷獎",
+    detail: "大學期間兩次",
+    note: "學業班排名第 5、操行班排名第 1",
   },
   {
-    date: "2022.07",
-    title: "戶外音樂季閉幕壓軸",
-    detail: "生涯第一次站上萬人舞台",
+    date: "2022",
+    title: "資訊應用服務創新創業新秀選拔",
+    detail: "潛力商品組銀獎",
+    note: "兒童元宇宙童書平台，負責前端",
   },
 ];
 
-// Cover credits (Unsplash License — free to use and modify; no third-party
-// brand or face visible):
-// - tide.jpg:  Mamun Srizon, https://unsplash.com/photos/pSPoLYF_AAA
-// - night.jpg: Tsuyoshi Kozu, https://unsplash.com/photos/luAFESue6Ws
-// - dawn.jpg:  Alan Jones, https://unsplash.com/photos/OQsxdghBKrU
-export const DISCOGRAPHY: Discography[] = [
-  {
-    name: "《潮汐圖》",
-    issuer: "浪聲唱片",
-    year: "2025",
-    img: coverTide,
-  },
-  {
-    name: "《夜行動物園》",
-    issuer: "浪聲唱片",
-    year: "2023",
-    img: coverNight,
-  },
-  {
-    name: "《拂曉前》EP",
-    issuer: "拂曉音樂工作室",
-    year: "2020",
-    img: coverDawn,
-  },
+export const CERTS: string[] = [
+  "金融科技力知識檢定",
+  "乙級電腦硬體裝修技術士",
+  "丙級電腦軟體應用技術士",
+  "丙級電腦軟體設計技術士",
 ];
 
-// --- Section-block wiring for AboutProfessional -----------------------
-// Splits a "start – end" period into its parts; a bare value (no " – ",
-// e.g. a project's plain year) yields `start` only.
 const splitPeriod = (period: string): { start: string; end?: string } => {
   const [start, end] = period.split(" – ");
   return { start, end };
 };
 
-// Combines a Highlight's optional `detail`/`note` into the single
-// `subtitle` line the generic HighlightEntry has room for.
 const joinDetail = (...parts: (string | undefined)[]): string | undefined =>
   parts.filter(Boolean).join(" · ") || undefined;
 
-const EXPERIENCE_ENTRIES: TimelineEntry[] = EXPERIENCE.map((e) => ({
-  title: e.title,
-  ...splitPeriod(e.period),
-  duties: e.duties,
-}));
+const toTimeline = (items: Experience[]): TimelineEntry[] =>
+  items.map((e) => ({
+    title: e.title,
+    ...splitPeriod(e.period),
+    duties: e.duties,
+  }));
+
+const educationDuties = (e: Education): TimelineEntry["duties"] => {
+  const duties: NonNullable<TimelineEntry["duties"]> = [];
+  if (e.thesis) {
+    duties.push({
+      name: `碩士論文：${e.thesis}`,
+      text: e.description ?? "",
+    });
+  }
+  if (e.project) {
+    duties.push({
+      name: `畢業專題：${e.project}`,
+      text: e.projectDescription ?? "",
+    });
+  }
+  return duties.length > 0 ? duties : undefined;
+};
+
+const PROJECT_ENTRIES: TimelineEntry[] = toTimeline(PROJECTS_WORK);
+const EXPERIENCE_ENTRIES: TimelineEntry[] = toTimeline(EXPERIENCE);
 
 const EDUCATION_ENTRIES: TimelineEntry[] = EDUCATION.map((e) => ({
   title: e.school,
   subtitle: e.degree,
   ...splitPeriod(e.period),
-  duties: e.thesis
-    ? [{ name: `論文：${e.thesis}`, text: e.description ?? "" }]
-    : undefined,
+  duties: educationDuties(e),
+}));
+
+const PUBLICATION_ENTRIES: HighlightEntry[] = PUBLICATIONS.map((h) => ({
+  title: h.title,
+  subtitle: joinDetail(h.detail, h.note),
+  date: h.date,
 }));
 
 const HIGHLIGHTS_ENTRIES: HighlightEntry[] = HIGHLIGHTS.map((h) => ({
@@ -193,42 +325,37 @@ const HIGHLIGHTS_ENTRIES: HighlightEntry[] = HIGHLIGHTS.map((h) => ({
   date: h.date,
 }));
 
-const DISCOGRAPHY_CARDS: CardEntry[] = DISCOGRAPHY.map((d) => ({
-  title: d.name,
-  subtitle: `${d.issuer} · ${d.year}`,
-  img: d.img ?? "",
-}));
-
-// Quick-facts strip; playful values are deliberate (this is placeholder data).
-const STATS_TILES: { value: string; label: string }[] = [
-  { value: "3", label: "張專輯" },
-  { value: "62", label: "場巡演" },
-  { value: "180+", label: "首詞曲" },
-];
-
-// Fictional fan-site/label link placeholders — swap in your own.
 const LINKS: { label: string; url: string; note?: string }[] = [
   {
-    label: "浪聲唱片｜藝人頁面",
-    url: "https://example.com/labels/wave-sound/pai-an",
-    note: "官方資料",
+    label: "E-mail",
+    url: "mailto:junteng.1113@gmail.com",
+    note: "junteng.1113@gmail.com",
   },
   {
-    label: "遙聲電台（粉絲站）",
-    url: "https://example.com/fansites/echo-radio",
-    note: "非官方彙整",
+    label: "GitHub",
+    url: "https://github.com/JunTeng1113",
+    note: "程式與專案",
+  },
+  {
+    label: "碩士論文",
+    url: "https://hdl.handle.net/11296/pdrk2d",
+    note: "臺灣博碩士論文知識加值系統",
   },
 ];
 
 export const PROFESSIONAL_SECTIONS: Section[] = [
-  // Intro paragraphs come from PROFILE.bio so the identity card and this
-  // section stay in sync.
   { type: "text", title: "關於", paragraphs: PROFILE.bio },
-  { type: "stats", title: "數據一覽", tiles: STATS_TILES },
+  { type: "timeline", title: "專案", entries: PROJECT_ENTRIES },
   { type: "timeline", title: "經歷", entries: EXPERIENCE_ENTRIES },
   { type: "timeline", title: "學歷", entries: EDUCATION_ENTRIES },
   { type: "chips", title: "技能", items: SKILLS },
-  { type: "highlights", title: "亮點", entries: HIGHLIGHTS_ENTRIES },
-  { type: "cards", title: "代表作", cards: DISCOGRAPHY_CARDS },
+  {
+    type: "highlights",
+    title: "學術發表",
+    icon: "book",
+    entries: PUBLICATION_ENTRIES,
+  },
+  { type: "highlights", title: "榮譽", entries: HIGHLIGHTS_ENTRIES },
+  { type: "chips", title: "證照", items: CERTS },
   { type: "links", title: "連結", links: LINKS },
 ];

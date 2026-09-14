@@ -7,11 +7,13 @@
 import type { HighlightEntry } from "@/data/sections";
 import { markYears } from "@/utils/timeline";
 import Icon from "@/components/Icon.astro";
+import type { IconName } from "@/components/icons";
 
 interface Props {
   entries: HighlightEntry[];
+  icon?: IconName;
 }
-const { entries } = Astro.props;
+const { entries, icon = "trophy" } = Astro.props;
 const ROWS = markYears(entries, (e) => e.date);
 ---
 
@@ -21,7 +23,7 @@ const ROWS = markYears(entries, (e) => e.date);
       <div class="item">
         <div class="aside ts-text is-description">{year}</div>
         <div class="indicator">
-          <Icon name="trophy" />
+          <Icon name={icon} />
         </div>
         <div class="content">
           <div class="ts-text is-bold">{e.title}</div>

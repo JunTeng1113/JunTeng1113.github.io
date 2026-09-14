@@ -9,7 +9,7 @@ export type TimelineEntry = {
   subtitle?: string;
   start: string;
   end?: string; // "YYYY.MM"
-  duties?: { name: string; text: string }[];
+  duties?: { name: string; text: string; href?: string }[];
 };
 export type HighlightEntry = { title: string; subtitle?: string; date: string };
 export type CardEntry = {
@@ -33,7 +33,12 @@ export type Section =
       rows: { label: string; value: string; icon?: IconName; href?: string }[];
     }
   | { type: "timeline"; title?: string; entries: TimelineEntry[] }
-  | { type: "highlights"; title?: string; entries: HighlightEntry[] }
+  | {
+      type: "highlights";
+      title?: string;
+      icon?: IconName;
+      entries: HighlightEntry[];
+    }
   | { type: "cards"; title?: string; cards: CardEntry[] }
   | { type: "stats"; title?: string; tiles: { value: string; label: string }[] }
   | {

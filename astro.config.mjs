@@ -297,7 +297,12 @@ export default defineConfig({
       },
     }),
     mdx(),
-    sitemap(),
+    sitemap({
+      filter: (page) => {
+        const path = new URL(page).pathname.replace(/\/$/, "") || "/";
+        return path !== "/";
+      },
+    }),
     notoFonts(),
     pagefindDev(),
     ...(SITE.features.math ? [katexAssets()] : []),

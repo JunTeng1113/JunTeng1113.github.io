@@ -12,7 +12,7 @@ const zhTW: UIStrings = {
   "landing.allPosts": "查看全部",
   "landing.aboutLabel": "關於本站",
   "landing.aboutBlurb":
-    "這裡是我放東西的地方。工作的履歷與作品、平日寫下的文章、隨手拍的照片，都收在這個網站裡。想認識這些東西背後的人，到關於頁翻個面。",
+    "履歷、專案和以後會寫的文章都放這裡。想認識寫這些東西的人，到關於頁翻個面。",
   "landing.hello": "在這些地方找到我",
   // Section eyebrows — deliberately English, like face.work above.
   "landing.enAbout": "About",
@@ -20,7 +20,7 @@ const zhTW: UIStrings = {
   "landing.enGallery": "Gallery",
   "landing.enProjects": "Projects",
   "landing.enHello": "Say hello",
-  "projects.description": "作品與側專案",
+  "projects.description": "課程專題與小工具",
   "projects.empty": "還沒有內容。",
   "layout.backToTop": "回到頂部",
   "face.switchTo": "切換到 {name}",
