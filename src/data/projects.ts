@@ -4,6 +4,7 @@ import imgPlate from "../assets/projects/license-plate-recognition.jpg";
 import imgCityBus from "../assets/projects/city-bus.png";
 import imgStudentId from "../assets/projects/student-id-ocr.png";
 import imgEvote from "../assets/projects/evote.png";
+import imgOwl from "../assets/projects/owl.jpg";
 
 export type Project = {
   name: string;
@@ -18,9 +19,10 @@ export const PROJECTS: Project[] = [
   {
     name: "Owl",
     description:
-      "高科大 Discord 機器人。可查校務公告與校園信箱，並用知識圖譜回答問題。",
+      "高科大 Discord 校園問答機器人。成員提問後先比對資料庫，必要時再帶入公務郵件或網路搜尋，交由 AI 整理成有出處的回答。也涵蓋公文與校務建言搜尋、實名驗證與社群輔助功能。",
     tech: ["Python", "discord.py", "PostgreSQL", "Gemini"],
     url: "https://github.com/JunTeng1113/Owl",
+    img: imgOwl,
   },
   {
     name: "eVote",
