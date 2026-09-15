@@ -10,18 +10,27 @@ export const PROFILE_LIFE = {
 };
 
 const INTRO = [
-  "GT，我是彰化人，人在高雄。今年六月從高科大智慧商務系碩士班畢業，目前待業中。",
-  "課業以外跑過學生議會和畢聯會，也當了幾學期班代。",
+  "GT，我是彰化人，人在高雄。",
 ];
 
-const INTERESTS = ["網頁開發", "學生自治", "社會議題", "動漫", "影劇", "遊戲"];
+const INTERESTS = [
+  "網頁開發",
+  "學生自治",
+  "社會議題",
+  "新聞時事",
+  "電影",
+  "影劇",
+  "動漫",
+  "遊戲",
+  "桌遊",
+  "出門",
+];
 
 const MISC_BODY = `有些話沒有適合的區塊可以放，這一區就是留給那些內容的。
 
 **最近在忙的事：**
 
-- 找工作
-- 把這個個人網站的內容換成自己的`;
+- 找工作`;
 
 export const PERSONAL_SECTIONS: Section[] = [
   { type: "text", title: "關於", paragraphs: INTRO },
